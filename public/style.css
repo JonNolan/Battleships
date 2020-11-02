@@ -1,151 +1,419 @@
+body {
+    margin: 1px;
+    background-color: #595959;
+}
+
+.water-splash {
+    content: '';
+    width: 100%;
+    min-height: 16vh;
+    bottom: 0;
+    position: fixed;
+    z-index: -2;
+    background-color: #265e7af5;
+}
+
+@media only screen and (max-width: 2000px) {
+    .water-splash {
+        content: '';
+        width: 100%;
+        min-height: 12vh;
+        bottom: 0;
+        position: fixed;
+        z-index: -2;
+        background-color: #265e7af5;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .water-splash {
+        content: '';
+        width: 100%;
+        min-height: 10vh;
+        bottom: 0;
+        position: fixed;
+        z-index: -2;
+        background-color: #265e7af5;
+    }
+}
+
+*, *::before, *::after {
+    font-family: 'Armata', sans-serif;
+    box-sizing: border-box;
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+.splash-title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 9rem;
+    color: #121613;
+    margin-right: 10px;
+}
+
+.splash-battleship-image {
+    position: absolute;
+    bottom: 8vh;
+    left: 10vw;
+    width: 80%;
+    transform: rotateY(180deg);
+    pointer-events: none;
+    opacity: .45;
+    z-index: -1;
+}
+
+
+.water {
+    background-color: #385f72;
+    width: 100%;
+    height: 10%;
+}
+
+.btn {
+    background-color: rgb(185, 187, 199);
+    padding: .5em 1em;
+    outline: none;
+    border-radius: 10px;
+    border: 4px solid #2b332d;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: .2rem;
+    color: #333;
+    font-size: inherit;
+}
+
+.btn:hover, .btn:focus {
+    background-color: rgb(141, 142, 150);
+}
+
+.splash-btn {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+.splash-btn:first-child {
+    margin-left: 0;
+}
+
+.mode-btn {
+    margin-top: 12px;
+    margin-left: 10px;
+    float: left;
+}
+
+.navigation-container {
+    width: 100%;
+    background-color: #121613;
+    height: 64px;
+}
+
+.nav-title {
+    float: right;
+    font-size: 30px;
+    font-family: 'Black Ops One', cursive;
+    color: rgb(38, 155, 22);
+    margin-top: 14px;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .container {
     display: flex;
 }
 
-.grid-user {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: blue;
-    margin: 20px;
-}
-
-.grid div {
-    width: 40px;
-    height: 40px;
+.battleship-grid {
+    margin: 2vmin;
+    display: grid;
+    background-color: #385f72;
+    grid-template-rows: repeat(10, 4.6vmin);
+    grid-template-columns: repeat(10, 4.6vmin);
 }
 
 .grid-computer {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: lightgreen;
-    margin: 20px;
+    cursor: pointer;
+}
+
+.grid-computer > .taken {
+    background-color: #385f72;
+    border-radius: 0 !important;
+}
+
+.taken, .ship {
+    position: relative;
+    background-color: hsl(0, 0%, 80%);
+}
+
+.taken.start.vertical, .taken.start.vertical::before {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.taken.end.vertical, .taken.end.vertical::before {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.taken.start.horizontal, .taken.start.horizontal::before {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.taken.end.horizontal, .taken.end.horizontal::before {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.taken.vertical::before, .taken.horizontal::before {
+    content: '';
+    position: absolute;
+    border: .3vmin solid white;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+}
+
+.taken.horizontal::before {
+    animation: ripplesY 3s linear infinite;
+    border-left: none;
+    border-right: none;
+}
+
+.taken.vertical::before {
+    animation: ripplesX 3s linear infinite;
+    border-top: none;
+    border-bottom: none;
+}
+
+@keyframes ripplesX {
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleX(1.5);
+
+    }
+}
+
+@keyframes ripplesY {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleY(1.5);
+
+    }
 }
 
 .grid-display {
-    width: 400px;
-    height: 400px;
-    margin: 20px;
-    background-color: yellow;
+    display: flex;
+}
+
+.ship > div {
+    width: 4.6vmin;
+    height: 4.6vmin;
+}
+
+.ship {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * var(--width, 1));
+    height: calc(4.6vmin * var(--height, 1));
+    border-radius: 2.3vmin;
+}
+
+.battleship-grid div {
+    border: 1px solid hsla(0, 0%, 100%, .2);
 }
 
 .destroyer-container {
-    width: 80px;
-    height: 40px;
-    background-color: orange;
-    margin: 10px;
-    display: flex;
+    --width: 2;
 }
 
 .destroyer-container-vertical {
-    width: 40px;
-    height: 80px;
-    background-color: orange;
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
+    --width: 1;
+    --height: 2;
 }
 
-.submarine-container {
-    width: 120px;
-    height: 40px;
-    background-color: pink;
-    margin: 10px;
-    display: flex;
+.submarine-container, .cruiser-container {
+    --width: 3;
 }
 
-.submarine-container-vertical {
-    width: 40px;
-    height: 120px;
-    background-color: pink;
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.cruiser-container {
-    width: 120px;
-    height: 40px;
-    background-color: purple;
-    margin: 10px;
-    display: flex;
-}
-
-.cruiser-container-vertical {
-    width: 40px;
-    height: 120px;
-    background-color: purple;
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
+.submarine-container-vertical, .cruiser-container-vertical {
+    --width: 1;
+    --height: 3;
 }
 
 .battleship-container {
-    width: 160px;
-    height: 40px;
-    background-color: aqua;
-    margin: 10px;
-    display: flex;
+    --width: 4;
 }
 
 .battleship-container-vertical {
-    width: 40px;
-    height: 160px;
-    background-color: aqua;
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
+    --width: 1;
+    --height: 4;
 }
 
 .carrier-container {
-    width: 200px;
-    height: 40px;
-    background-color: green;
-    margin: 10px;
-    display: flex;
+    --width: 5;
 }
 
 .carrier-container-vertical {
-    width: 40px;
-    height: 200px;
-    background-color: green;
-    margin: 10px;
+    --width: 1;
+    --height: 5;
+}
+
+.hidden-info {
+    font-size: 1.5rem;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info-text {
+    margin: 1rem;
+}
+
+.turn-container {
+    background-color: #121613;
+    width: 40%;
+    text-align: center;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 5px solid rgb(141, 142, 150);
+    color: rgb(38, 155, 22);
+}
+
+.kill-list {
+    background-color: #121613;
+    width: 60%;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 5px solid rgb(141, 142, 150);
+    color: rgb(38, 155, 22);
+}
+
+.miss, .boom {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.ship div {
-    width: 40px;
-    height: 40px;
+.boom::after, .miss::after {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: 2vmin;
+    height: 2vmin;
+
+}
+div .boom, div .miss {
+    pointer-events: none;
 }
 
-.destroyer {
-    background-color: orange;
+.miss::after {
+    background-color: white;
 }
 
-.submarine {
-    background-color: pink;
-}
-
-.cruiser {
-    background-color: purple;
-}
-
-.battleship {
-    background-color: aqua;
-}
-
-.carrier {
-    background-color: green;
-}
-
-.boom {
+.boom::after {
     background-color: red;
 }
 
-.miss {
-    background-color: black;
+.miss::before {
+    content: '';
+    position: absolute;
+    animation: hit .2s ease-out forwards;
+    border: 1vmin solid white;
+    border-radius: 100%;
+    width: 2vmin;
+    height: 2vmin;
+}
+
+.grid-user > .boom {
+    animation: boom .2s ease-out forwards;
+}
+
+.grid-computer > .boom {
+    animation: compBoom .2s ease-out forwards;
+}
+
+@keyframes hit {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(4)
+    }
+}
+
+@keyframes boom {
+    0% {
+        background-color: red;
+    }
+    100% {
+        background-color: hsl(0, 0%, 80%);
+    }
+}
+
+@keyframes compBoom {
+    0% {
+        background-color: red;
+    }
+    100% {
+        background-color: #385f72;
+    }
+}
+
+.player {
+    margin-top: 0.5vmin;
+    margin-bottom: 0.5vmin;
+    margin-left: 18.6vmin;
+    margin-right: 18.6vmin;
+    border-radius: 10px;
+    border: 5px solid rgb(141, 142, 150);
+    color: rgb(38, 155, 22);
+    background-color: #121613;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 20px;
+}
+
+.p1 {
+    text-align: right;
+}
+
+.p2-text {
+    color: rgb(203, 30, 0);
+    font-weight: 700;
+}
+
+.connected, .ready {
+ font-weight: normal;
+ opacity: .25;
+ text-decoration: line-through;
+}
+
+.connected.active, .ready.active {
+    opacity: 1;
+    text-decoration: none;
 }

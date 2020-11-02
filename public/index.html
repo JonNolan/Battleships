@@ -4,27 +4,19 @@
     <meta charset="utf-8">
     <title>Battleships!</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" charset="utf-8"></script>
+    <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css2?family=Armata&family=Black+Ops+One&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <div class="grid grid-user"></div>
-      <div class="grid grid-computer"></div>
+    <div class="splash-container">
+      <h1 class="splash-title">Battleships!</h1>
+      <div>
+        <a href="/singleplayer.html" class="btn splash-btn">Single Player</a>
+        <a href="/multiplayer.html" class="btn splash-btn">Multiplayer</a>
+      </div>
     </div>
 
-    <div class="hidden-info">
-      <button id="start">Start Game</button>
-      <button id="rotate">Rotate Ship</button>
-      <h3 id="whose-go">Your Go</h3>
-      <h3 id="info">...</h3>
-    </div>
-
-    <div class="grid-display">
-      <div class="ship destroyer-container" draggable="true"><div id="destroyer-0"></div><div id="destroyer-1"></div></div>
-      <div class="ship submarine-container" draggable="true"><div id="submarine-0"></div><div id="submarine-1"></div><div id="submarine-2"></div></div>
-      <div class="ship cruiser-container" draggable="true"><div id="cruiser-0"></div><div id="cruiser-1"></div><div id="cruiser-2"></div></div>
-      <div class="ship battleship-container" draggable="true"><div id="battleship-0"></div><div id="battleship-1"></div><div id="battleship-2"></div><div id="battleship-3"></div></div>
-      <div class="ship carrier-container" draggable="true"><div id="carrier-0"></div><div id="carrier-1"></div><div id="carrier-2"></div><div id="carrier-3"></div><div id="carrier-4"></div></div>
-    </div>
+    <img width="1024" alt="Battleship clipart" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Battleship_clipart.svg/1024px-Battleship_clipart.svg.png" class="splash-battleship-image">
+    <div class="water-splash"></div>
   </body>
 </html>
