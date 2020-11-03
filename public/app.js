@@ -320,7 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ready = true
       playerReady(playerNum)
     }
-
     if (enemyReady) {
       if(currentPlayer == 'user') {
         turnDisplay.innerHTML = 'Your turn.'
@@ -744,6 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isGameOver = true
     startButton.removeEventListener('click', playGameSingle)
   }
+  
 if (gameMode == 'singlePlayer') $('.nav-level').html('Training Mode')
 initializeSquaresModel(() => populatePossibleMoves(() => populateTargets(() => populateHighTargets())))
 })

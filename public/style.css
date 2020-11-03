@@ -93,7 +93,6 @@ body {
 .nav-text {
     font-family: 'Black Ops One', cursive;
     color: rgb(38, 155, 22);
-
 }
 .nav-title {
     float: right;
@@ -103,7 +102,7 @@ body {
 }
 .nav-level {
     float: left;
-    margin-left: 50px;
+    margin-left: 80px;
     font-size: 20px;
     margin-top: 20px;
 }
