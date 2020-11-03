@@ -2,46 +2,34 @@ body {
     margin: 1px;
     background-color: #595959;
 }
-
 .water-splash {
     content: '';
     width: 100%;
-    min-height: 16vh;
+    min-height: 15vh;
     bottom: 0;
     position: fixed;
     z-index: -2;
     background-color: #265e7af5;
 }
-
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 1700px) {
     .water-splash {
-        content: '';
-        width: 100%;
+        min-height: 14vh;
+    }
+}
+@media only screen and (max-width: 1400px) {
+    .water-splash {
+        min-height: 13vh;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .water-splash {
         min-height: 12vh;
-        bottom: 0;
-        position: fixed;
-        z-index: -2;
-        background-color: #265e7af5;
     }
 }
-
-@media only screen and (max-width: 1000px) {
-    .water-splash {
-        content: '';
-        width: 100%;
-        min-height: 10vh;
-        bottom: 0;
-        position: fixed;
-        z-index: -2;
-        background-color: #265e7af5;
-    }
-}
-
 *, *::before, *::after {
     font-family: 'Armata', sans-serif;
     box-sizing: border-box;
 }
-
 .splash-container {
     display: flex;
     flex-direction: column;
@@ -49,14 +37,12 @@ body {
     align-items: center;
     height: 75vh;
 }
-
 .splash-title {
     font-family: 'Black Ops One', cursive;
     font-size: 9rem;
     color: #121613;
     margin-right: 10px;
 }
-
 .splash-battleship-image {
     position: absolute;
     bottom: 8vh;
@@ -67,14 +53,11 @@ body {
     opacity: .45;
     z-index: -1;
 }
-
-
 .water {
     background-color: #385f72;
     width: 100%;
     height: 10%;
 }
-
 .btn {
     background-color: rgb(185, 187, 199);
     padding: .5em 1em;
@@ -87,51 +70,51 @@ body {
     color: #333;
     font-size: inherit;
 }
-
 .btn:hover, .btn:focus {
     background-color: rgb(141, 142, 150);
 }
-
 .splash-btn {
     font-size: 1.5rem;
     margin-left: 2rem;
 }
-
 .splash-btn:first-child {
     margin-left: 0;
 }
-
 .mode-btn {
     margin-top: 12px;
     margin-left: 10px;
     float: left;
 }
-
 .navigation-container {
     width: 100%;
     background-color: #121613;
     height: 64px;
 }
-
-.nav-title {
-    float: right;
-    font-size: 30px;
+.nav-text {
     font-family: 'Black Ops One', cursive;
     color: rgb(38, 155, 22);
-    margin-top: 14px;
-    margin-right: 10px;
-}
 
+}
+.nav-title {
+    float: right;
+    margin-right: 10px;
+    font-size: 30px;
+    margin-top: 14px;
+}
+.nav-level {
+    float: left;
+    margin-left: 50px;
+    font-size: 20px;
+    margin-top: 20px;
+}
 .container {
     display: flex;
     justify-content: center;
     width: 100%;
 }
-
 .container {
     display: flex;
 }
-
 .battleship-grid {
     margin: 2vmin;
     display: grid;
@@ -139,41 +122,33 @@ body {
     grid-template-rows: repeat(10, 4.6vmin);
     grid-template-columns: repeat(10, 4.6vmin);
 }
-
 .grid-computer {
     cursor: pointer;
 }
-
 .grid-computer > .taken {
     background-color: #385f72;
     border-radius: 0 !important;
 }
-
 .taken, .ship {
     position: relative;
     background-color: hsl(0, 0%, 80%);
 }
-
 .taken.start.vertical, .taken.start.vertical::before {
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
 }
-
 .taken.end.vertical, .taken.end.vertical::before {
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
 }
-
 .taken.start.horizontal, .taken.start.horizontal::before {
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
 }
-
 .taken.end.horizontal, .taken.end.horizontal::before {
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
 }
-
 .taken.vertical::before, .taken.horizontal::before {
     content: '';
     position: absolute;
@@ -183,54 +158,43 @@ body {
     left: -1px;
     right: -1px;
 }
-
 .taken.horizontal::before {
     animation: ripplesY 3s linear infinite;
     border-left: none;
     border-right: none;
 }
-
 .taken.vertical::before {
     animation: ripplesX 3s linear infinite;
     border-top: none;
     border-bottom: none;
 }
-
 @keyframes ripplesX {
     0% {
         opacity: 1;
         transform: scaleX(1);
     }
-
     100% {
         opacity: 0;
         transform: scaleX(1.5);
-
     }
 }
-
 @keyframes ripplesY {
     0% {
         opacity: 1;
         transform: scaleY(1);
     }
-
     100% {
         opacity: 0;
         transform: scaleY(1.5);
-
     }
 }
-
 .grid-display {
     display: flex;
 }
-
 .ship > div {
     width: 4.6vmin;
     height: 4.6vmin;
 }
-
 .ship {
     display: flex;
     flex-wrap: wrap;
@@ -239,57 +203,45 @@ body {
     height: calc(4.6vmin * var(--height, 1));
     border-radius: 2.3vmin;
 }
-
 .battleship-grid div {
     border: 1px solid hsla(0, 0%, 100%, .2);
 }
-
 .destroyer-container {
     --width: 2;
 }
-
 .destroyer-container-vertical {
     --width: 1;
     --height: 2;
 }
-
 .submarine-container, .cruiser-container {
     --width: 3;
 }
-
 .submarine-container-vertical, .cruiser-container-vertical {
     --width: 1;
     --height: 3;
 }
-
 .battleship-container {
     --width: 4;
 }
-
 .battleship-container-vertical {
     --width: 1;
     --height: 4;
 }
-
 .carrier-container {
     --width: 5;
 }
-
 .carrier-container-vertical {
     --width: 1;
     --height: 5;
 }
-
 .hidden-info {
     font-size: 1.5rem;
     align-items: center;
     flex-direction: column;
 }
-
 .info-text {
     margin: 1rem;
 }
-
 .turn-container {
     background-color: #121613;
     width: 40%;
@@ -299,7 +251,6 @@ body {
     border: 5px solid rgb(141, 142, 150);
     color: rgb(38, 155, 22);
 }
-
 .kill-list {
     background-color: #121613;
     width: 60%;
@@ -308,33 +259,27 @@ body {
     border: 5px solid rgb(141, 142, 150);
     color: rgb(38, 155, 22);
 }
-
 .miss, .boom {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .boom::after, .miss::after {
     content: '';
     position: absolute;
     border-radius: 100%;
     width: 2vmin;
     height: 2vmin;
-
 }
 div .boom, div .miss {
     pointer-events: none;
 }
-
 .miss::after {
     background-color: white;
 }
-
 .boom::after {
     background-color: red;
 }
-
 .miss::before {
     content: '';
     position: absolute;
@@ -344,15 +289,12 @@ div .boom, div .miss {
     width: 2vmin;
     height: 2vmin;
 }
-
 .grid-user > .boom {
     animation: boom .2s ease-out forwards;
 }
-
 .grid-computer > .boom {
     animation: compBoom .2s ease-out forwards;
 }
-
 @keyframes hit {
     0% {
         opacity: 1;
@@ -363,7 +305,6 @@ div .boom, div .miss {
         transform: scale(4)
     }
 }
-
 @keyframes boom {
     0% {
         background-color: red;
@@ -372,7 +313,6 @@ div .boom, div .miss {
         background-color: hsl(0, 0%, 80%);
     }
 }
-
 @keyframes compBoom {
     0% {
         background-color: red;
@@ -381,7 +321,6 @@ div .boom, div .miss {
         background-color: #385f72;
     }
 }
-
 .player {
     margin-top: 0.5vmin;
     margin-bottom: 0.5vmin;
@@ -397,22 +336,18 @@ div .boom, div .miss {
     padding-right: 18px;
     font-size: 20px;
 }
-
 .p1 {
     text-align: right;
 }
-
 .p2-text {
     color: rgb(203, 30, 0);
     font-weight: 700;
 }
-
 .connected, .ready {
  font-weight: normal;
  opacity: .25;
  text-decoration: line-through;
 }
-
 .connected.active, .ready.active {
     opacity: 1;
     text-decoration: none;

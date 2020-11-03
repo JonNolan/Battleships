@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let possibleTargetsModel = []
   let possibleHighTargetsModel = []
   let mostSuccessfulClasses = []
+  let enhancement = 0
 
   // Ships
   const shipArray = [
@@ -712,10 +713,37 @@ document.addEventListener('DOMContentLoaded', () => {
     turnDisplay.innerHTML = 'Your turn.'
   }
 
+  $('#enhance').click(function() {
+    turnDisplay.innerHTML = 'Loading...'
+    if (enhancement == 0) {
+      enhancement++
+      enhancement++
+      $.getJSON('/enhance?level=' + enhancement, function() {
+        $('.nav-level').html('Level 2.0')
+      })
+    } else if (enhancement == 1) {
+      enhancement++
+      $.getJSON('/enhance?level=' + enhancement, function() {
+        $('.nav-level').html('Level 2.0')
+      })
+    } else if (enhancement == 2) {
+      enhancement++
+      $.getJSON('/enhance?level=' + enhancement, function() {
+        $('.nav-level').html('Level 3.0')
+      })
+    } else if (enhancement == 3) {
+      enhancement = 1
+      $.getJSON('/enhance?level=' + enhancement, function() {
+        $('.nav-level').html('Level 1.0')
+      })
+    }
+    turnDisplay.innerHTML = 'Your turn.'
+  })
+
   function gameOver() {
     isGameOver = true
     startButton.removeEventListener('click', playGameSingle)
   }
-
+if (gameMode == 'singlePlayer') $('.nav-level').html('Training Mode')
 initializeSquaresModel(() => populatePossibleMoves(() => populateTargets(() => populateHighTargets())))
 })
