@@ -258,25 +258,25 @@ body {
     border: 5px solid rgb(141, 142, 150);
     color: rgb(38, 155, 22);
 }
-.miss, .boom {
+.miss, .explosion {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.boom::after, .miss::after {
+.explosion::after, .miss::after {
     content: '';
     position: absolute;
     border-radius: 100%;
     width: 2vmin;
     height: 2vmin;
 }
-div .boom, div .miss {
+div .explosion, div .miss {
     pointer-events: none;
 }
 .miss::after {
     background-color: white;
 }
-.boom::after {
+.explosion::after {
     background-color: red;
 }
 .miss::before {
@@ -288,11 +288,11 @@ div .boom, div .miss {
     width: 2vmin;
     height: 2vmin;
 }
-.grid-user > .boom {
-    animation: boom .2s ease-out forwards;
+.grid-user > .explosion {
+    animation: explosion .2s ease-out forwards;
 }
-.grid-computer > .boom {
-    animation: compBoom .2s ease-out forwards;
+.grid-computer > .explosion {
+    animation: compExplosion .2s ease-out forwards;
 }
 @keyframes hit {
     0% {
@@ -304,7 +304,7 @@ div .boom, div .miss {
         transform: scale(4)
     }
 }
-@keyframes boom {
+@keyframes explosion {
     0% {
         background-color: red;
     }
@@ -312,7 +312,7 @@ div .boom, div .miss {
         background-color: hsl(0, 0%, 80%);
     }
 }
-@keyframes compBoom {
+@keyframes compExplosion {
     0% {
         background-color: red;
     }
