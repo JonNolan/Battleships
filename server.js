@@ -14,7 +14,7 @@ const server = http.createServer(app);
 // Initialize and set available web socket
 const io = socketio(server);
 
-// Set database info
+// Initialize and set database info
 const dbInfo = {
   host: "localhost",
   user: "root",
@@ -22,7 +22,7 @@ const dbInfo = {
   database: "BattleshipsDB"
 }
 
-// Set static folder
+// Initialize and set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Start server
@@ -33,7 +33,7 @@ app.get("/updateSuccess", updateSuccess);
 app.get("/updateFail", updateFail);
 app.get("/enhance", enhance);
 
-// Create DB connection
+// Initialize and set DB connection
 const connection = mysql.createConnection(dbInfo);
 connection.connect(function(err) {
   if(err) throw err;
