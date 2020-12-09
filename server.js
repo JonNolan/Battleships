@@ -1,11 +1,17 @@
+// Initialize and set required node modules
 const express = require('express');
 const mysql = require('mysql');
 const path = require('path');
 const http = require('http');
+// Initialize and set port to be used
 const PORT = process.env.PORT || 3000;
+// Initialize and set required node express.js modules
 const socketio = require('socket.io');
+// Initialize and set express app
 const app = express();
+// Initialize and set http server for app
 const server = http.createServer(app);
+// Initialize and set available web socket
 const io = socketio(server);
 
 // Set database info
